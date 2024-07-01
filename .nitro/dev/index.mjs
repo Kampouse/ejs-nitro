@@ -1,24 +1,23 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { Server } from 'node:http';
 import { tmpdir } from 'node:os';
-import { join as join$1 } from 'node:path';
+import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { provider, isWindows } from 'file:///Users/kampouse/dev/dumb/node_modules/std-env/dist/index.mjs';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, setResponseHeader, send, createError, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getQuery as getQuery$1, readBody } from 'file:///Users/kampouse/dev/dumb/node_modules/h3/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/kampouse/dev/dumb/node_modules/ofetch/dist/node.mjs';
-import destr from 'file:///Users/kampouse/dev/dumb/node_modules/destr/dist/index.mjs';
-import { createCall, createFetch } from 'file:///Users/kampouse/dev/dumb/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/kampouse/dev/dumb/node_modules/hookable/dist/index.mjs';
-import { klona } from 'file:///Users/kampouse/dev/dumb/node_modules/klona/dist/index.mjs';
-import { snakeCase } from 'file:///Users/kampouse/dev/dumb/node_modules/scule/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/kampouse/dev/dumb/node_modules/defu/dist/defu.mjs';
-import { hash } from 'file:///Users/kampouse/dev/dumb/node_modules/ohash/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Users/kampouse/dev/dumb/node_modules/ufo/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/kampouse/dev/dumb/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/kampouse/dev/dumb/node_modules/unstorage/drivers/fs.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/kampouse/dev/dumb/node_modules/radix3/dist/index.mjs';
+import { provider, isWindows } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/std-env@3.7.0/node_modules/std-env/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, setResponseHeader, send, createError, getRequestURL, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getQuery as getQuery$1, readBody } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/h3@1.12.0/node_modules/h3/dist/index.mjs';
+import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/ofetch@1.3.4/node_modules/ofetch/dist/node.mjs';
+import destr from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/destr@2.0.3/node_modules/destr/dist/index.mjs';
+import { createCall, createFetch } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/unenv@1.9.0/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
+import { klona } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/klona@2.0.6/node_modules/klona/dist/index.mjs';
+import { snakeCase } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/scule@1.3.0/node_modules/scule/dist/index.mjs';
+import defu, { defuFn } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
+import { hash } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/ohash@1.1.3/node_modules/ohash/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/ufo@1.5.3/node_modules/ufo/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/unstorage@1.10.2_ioredis@5.4.1/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/unstorage@1.10.2_ioredis@5.4.1/node_modules/unstorage/drivers/fs.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/radix3@1.1.2/node_modules/radix3/dist/index.mjs';
 import * as ejs from 'file:///Users/kampouse/dev/dumb/node_modules/.pnpm/ejs@3.1.10/node_modules/ejs/lib/ejs.js';
-import { join } from 'path';
 
 function getEnv(key, opts) {
   const envKey = snakeCase(key).toUpperCase();
@@ -678,20 +677,32 @@ async function runTask(name, {
   }
 }
 
-const _vPaPIh = defineNitroPlugin(eventHandler(
-  (nitro) => {
-    const str = new String(nitro._path);
-    if (!str.startsWith("/api")) ;
-    console.log("nitro._path", ejs.renderFile(join(globalThis._importMeta_.url, "views", "index.ejs"), { name: "John Doe" }));
+const _rWPT6M = defineNitroPlugin(eventHandler(
+  async (nitro) => {
+    const $fetcher = $fetch;
+    const url = getRequestURL(nitro);
+    if (url.pathname.startsWith("/api")) {
+      return Promise.resolve();
+    }
+    if (url.pathname === "/") {
+      url.pathname = "index";
+    }
+    const viewPath = "./server/views" + url.pathname + ".ejs";
+    const data = await $fetcher("/api/hello", { method: "GET" });
+    console.log("viewPath", viewPath);
+    return ejs.renderFile(viewPath, data).catch((error) => {
+      console.log("error", error);
+      return ejs.renderFile("./server/views/404.ejs", { message: "File: \n" + viewPath + " : Not found :(" });
+    });
   }
 ));
 
-const _lazy_IvSzym = () => Promise.resolve().then(function () { return hello; });
+const _lazy_t5EAqj = () => Promise.resolve().then(function () { return hello$1; });
 const _lazy_Uo5U0X = () => Promise.resolve().then(function () { return index$1; });
 
 const handlers = [
-  { route: '', handler: _vPaPIh, lazy: false, middleware: true, method: undefined },
-  { route: '/hello', handler: _lazy_IvSzym, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _rWPT6M, lazy: false, middleware: true, method: undefined },
+  { route: '/api/hello', handler: _lazy_t5EAqj, lazy: true, middleware: false, method: undefined },
   { route: '/', handler: _lazy_Uo5U0X, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -824,11 +835,11 @@ function getAddress() {
   }
   const socketName = `worker-${process.pid}-${threadId}.sock`;
   if (isWindows) {
-    return join$1("\\\\.\\pipe\\nitro", socketName);
+    return join("\\\\.\\pipe\\nitro", socketName);
   } else {
-    const socketDir = join$1(tmpdir(), "nitro");
+    const socketDir = join(tmpdir(), "nitro");
     mkdirSync(socketDir, { recursive: true });
-    return join$1(socketDir, socketName);
+    return join(socketDir, socketName);
   }
 }
 const listenAddress = getAddress();
@@ -876,8 +887,13 @@ parentPort.on("message", async (msg) => {
   }
 });
 
-const hello = /*#__PURE__*/Object.freeze({
-  __proto__: null
+const hello = defineEventHandler(() => {
+  return { name: "API" };
+});
+
+const hello$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: hello
 });
 
 const index = defineEventHandler((event) => {

@@ -3,26 +3,11 @@ import type { Serialize, Simplify } from 'nitropack'
 declare module 'nitropack' {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
-    '/hello': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/hello').default>>>>
+    '/api/hello': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/api/hello').default>>>>
     }
     '/': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/index').default>>>>
-    }
-    '/views/.nitro/dev': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/views/.nitro/dev/index').default>>>>
-    }
-    '/views/.nitro/types/nitro-config.d': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/views/.nitro/types/nitro-config.d').default>>>>
-    }
-    '/views/.nitro/types/nitro-imports.d': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/views/.nitro/types/nitro-imports.d').default>>>>
-    }
-    '/views/.nitro/types/nitro-routes.d': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/views/.nitro/types/nitro-routes.d').default>>>>
-    }
-    '/views/.nitro/types/nitro.d': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/routes/views/.nitro/types/nitro.d').default>>>>
     }
   }
 }
